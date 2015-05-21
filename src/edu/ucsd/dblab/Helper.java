@@ -14,7 +14,11 @@ import edu.ucsd.dblab.models.DeliveryTruck;
 
 public class Helper {
 	
-	
+	/**
+	 * This method retrieves a JSON from a REST Web Service, parses it, 
+	 * creates an ArrayList of delivery trucks and returns it. 
+	 * @return
+	 */
 	public ArrayList<DeliveryTruck> getDeliveryTrucks() {
 	      URL url;
 	      HttpURLConnection conn;
@@ -22,6 +26,7 @@ public class Helper {
 	      String line;
 	      String result = "";
 	      try {
+	    	 // Had to go with JSONP due to CORS error... 
 	         url = new URL("http://zarifis1.ucsd.edu:3000/delivery_trucksi");
 	         conn = (HttpURLConnection) url.openConnection();
 	         conn.setRequestMethod("GET");
@@ -38,7 +43,7 @@ public class Helper {
 	         e.printStackTrace();
 	      }
 	      
-	      //System.out.println(result);
+	      // Parse the JSON and create the corresponding objects
 	      try {
 	    	  JSONArray arr = new JSONArray(result); 
 		      ArrayList<DeliveryTruck> delivery_trucks = new ArrayList<DeliveryTruck>();
@@ -64,7 +69,6 @@ public class Helper {
 		    	  }
 		    	  t.setDeliveries(deliveries);
 		    	  delivery_trucks.add(t);
-		    	  // System.out.println(arr.getJSONObject(i));
 		      }
 		      
 		      return delivery_trucks;
@@ -74,10 +78,5 @@ public class Helper {
 		  }
 	   }
 
-	/*public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getDeliveryTrucks();
-
-	}*/
 
 }

@@ -1,12 +1,15 @@
 package edu.ucsd.dblab.models;
 
 public class DeliveryItem {
+	
 	private int delivery_ID;
 	private String recipient;
 	private String scheduled_time;
 	private String delivered_time;
 	private String item_title;
 	private String item_description;
+	
+	
 	public int getDelivery_ID() {
 		return delivery_ID;
 	}

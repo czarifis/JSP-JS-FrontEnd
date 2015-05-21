@@ -3,11 +3,14 @@ package edu.ucsd.dblab.models;
 import java.util.ArrayList;
 
 public class DeliveryTruck {
+	
 	private int id;
 	private ArrayList<DeliveryItem> deliveries = new ArrayList<DeliveryItem>();
 	private Coordinates coordinates;
 	private int pending_deliveries;
 	private boolean visible;
+	
+	
 	public int getId() {
 		return id;
 	}

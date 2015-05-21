@@ -1,8 +1,12 @@
 package edu.ucsd.dblab.models;
 
 public class Coordinates {
+	
+	
 	private double latitude;
 	private double longitude;
+	
+	
 	public Coordinates(double latitude, double longitude) {
 		super();
 		this.latitude = latitude;
