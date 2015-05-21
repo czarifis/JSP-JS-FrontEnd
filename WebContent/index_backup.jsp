@@ -66,78 +66,91 @@
 		ArrayList<DeliveryTruck> list = h.getDeliveryTrucks();
 	%>
 
-	<ion-header-bar class="bar-stable bar bar-header disable-user-behavior">
+	<ion-header-bar
+		class="bar-stable bar bar-header disable-user-behavior">
 	<h1 class="title">CSE135 Demo</h1>
-	</ion-header-bar>
-	<%
-		if (list == null) {
-	%>
+	</ion-header-bar> <%
+ 		if (list == null) {
+ 	%>
 	<div class="bar bar-header">
 		<h1 class="title">Web Service is currently inactive</h1>
 	</div>
 	<%
 		} else {
-	%>
-	<div>
-		<div>
+	%> <div >
+	<div >
 
 
-			<div id="one">
-				<ion-list class="disable-user-behavior">
-				<div class="list">
-					<button class="button activated"
-						onclick="window.location.reload();">Modify markers</button>
+		<div id="one">
+			<ion-list class="disable-user-behavior">
+			<div class="list">
+				<button class="button activated" onclick="window.location.reload();">
+					Modify markers</button>
 
 
-				</div>
-				</ion-list>
 			</div>
-
-			<div id="two">
-
-				<div id="map_canvas"></div>
-			</div>
-			<div style="width: 100%; height: 600px; overflow: auto;">
-
-				<table style="width: 100%; height: 600px;">
-					<tr>
-						<th>Truck ID</th>
-						<th>Coords</th>
-						<th>Delivery ID</th>
-						<th>Scheduled Time</th>
-						<th>Delivered Time</th>
-						<th>Item Title</th>
-					</tr>
-					<%
-						for (int i = 0; i < list.size(); i++) {
-							for (int j = 0; j < list.get(i).getDeliveries().size(); j++) {
-								%>
-								<tr>
-									<td><%=list.get(i).getId()%></td>
-									<td><%=list.get(i).getCoordinates().getLatitude()%> - <%=list.get(i).getCoordinates().getLongitude()%></td>
-									<td><%=list.get(i).getDeliveries().get(j)
-											.getDelivery_ID()%></td>
-									<td><%=list.get(i).getDeliveries().get(j)
-											.getScheduled_time()%></td>
-									<td><%=list.get(i).getDeliveries().get(j)
-											.getDelivered_time()%></td>
-									<td><%=list.get(i).getDeliveries().get(j)
-											.getItem_title()%></td>
-								</tr>
-								<%
-							}
-						}
-					%>
-				</table>
-			</div>
-			<%
-				}
-			%>
-
-
+			</ion-list>
 		</div>
 
+		<div id="two">
+
+			<div id="map_canvas"></div>
+		</div>
+
+
+
+
+		<div class="item item-divider">
+
+			<div class="row">
+				<div class="col">Truck ID</div>
+				<div class="col">Coords</div>
+				<div class="col">Delivery ID</div>
+				<div class="col">Scheduled Time</div>
+				<div class="col">Delivered Time</div>
+				<div class="col">Item Title</div>
+			</div>
+		</div>
+
+		<%
+			for (int i = 0; i < list.size(); i++) {
+		%>
+		<tr>
+			<%
+				for (int j = 0; j < list.get(i).getDeliveries().size(); j++) {
+			%>
+	
+				<tr class="col"><%=list.get(i).getId()%></tr>
+				<tr class="col"><%=list.get(i).getCoordinates().getLatitude()%>
+					-
+					<%=list.get(i).getCoordinates().getLongitude()%></tr>
+				<tr class="col"><%=list.get(i).getDeliveries().get(j)
+										.getDelivery_ID()%></tr>
+				<tr class="col"><%=list.get(i).getDeliveries().get(j)
+										.getScheduled_time()%></tr>
+				<tr class="col"><%=list.get(i).getDeliveries().get(j)
+										.getDelivered_time()%>
+				</tr>
+				<tr class="col"><%=list.get(i).getDeliveries().get(j)
+										.getItem_title()%></tr>
+		
+			<%
+				} %>
+				
+				</tr>
+				<%
+
+			}
+		%>
+		<%
+		}
+		%>
 	</div>
+
+	</div> 
+	<%
+		list = null;
+	%>
 
 
 </body>
